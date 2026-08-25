@@ -8,9 +8,13 @@ class PingBot(discord.Client):
     def __init__(self) -> None:
         super().__init__(intents=discord.Intents.none())
         self.commands = app_commands.CommandTree(self)
+        self.synced = False
 
-    async def setup_hook(self) -> None:
-        await self.commands.sync()
+    async def on_ready(self) -> None:
+        if not self.synced:
+            await self.commands.sync()
+            self.synced = True
+        print(f"Ready as {self.user}", flush=True)
 
 
 bot = PingBot()

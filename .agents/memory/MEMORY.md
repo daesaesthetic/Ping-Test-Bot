@@ -1,0 +1,1 @@
+- [Discord bot authentication](discord-bot-auth.md) — Replit’s Discord connector is user OAuth; message bots need their own bot token secret.
